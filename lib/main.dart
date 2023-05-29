@@ -98,6 +98,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: TextField(
                     controller: vidTxtController,
                     decoration: InputDecoration(labelText: "URL"),
+                    onSubmitted: (v){
+                      setState(() {
+                            vid = YoutubePlayerController.convertUrlToId(
+                                vidTxtController.text);
+                            _controller.loadVideoById(videoId: vid??"");
+                          });
+                    },
                   ),
                 )),
                 SizedBox(
